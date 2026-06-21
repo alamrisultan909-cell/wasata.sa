@@ -54,3 +54,28 @@ document.querySelectorAll('section').forEach(section => {
     section.style.transition = 'all 0.6s ease';
     observer.observe(section);
 });
+
+// Theme toggle (dark / light)
+(function() {
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+
+  function setTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    }
+  }
+
+  // Initialize
+  const saved = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  setTheme(saved);
+
+  btn.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    setTheme(isDark ? 'light' : 'dark');
+  });
+})();
