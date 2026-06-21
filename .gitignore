@@ -1,0 +1,25 @@
+# IDE and Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Node and dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build and dist
+dist/
+build/
+*.min.js
+*.min.css
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
